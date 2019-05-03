@@ -82,11 +82,12 @@ function createRock(x) {
  */
 function endGame() {
   clearInterval(gameInterval);
-  var len = ROCKS.length-3
+  var len = ROCKS.length
   ROCKS.forEach(function(rock){ rock.remove()});
   document.removeEventListener('keydown',moveDodger);
   START.innerHTML=`Play again? Score: ${len}`;
   START.style.display='inline';
+  len=0;
 }
 
 function moveDodger(e) {
@@ -131,5 +132,5 @@ function start() {
 
   gameInterval = setInterval(function() {
     createRock(Math.floor(Math.random() *  (GAME_WIDTH - 20)))
-  }, 1000);
+  }, 500);
 }
